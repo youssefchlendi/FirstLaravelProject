@@ -42,7 +42,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-end">Phone number</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -78,6 +78,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+
+                                <a href="{{url('redirect/facebook')}}" class="btn btn-primary">
+                                    Register with facebook
+                                </a>
                             </div>
                         </div>
                     </form>
