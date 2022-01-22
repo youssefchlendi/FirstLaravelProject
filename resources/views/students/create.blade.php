@@ -8,11 +8,20 @@
             <form action="{{ url('students') }}" method="post">
                 {!! csrf_field() !!}
                 <label>Name</label><br>
-                <input type="text" name="student_name" id="student_name" class="form-control"><br>
-                <label>Address</label><br>
-                <input type="text" name="course" id="course" class="form-control"><br>
-                <label>Mobile</label><br>
-                <input type="text" name="fee" id="fee" class="form-control"><br>
+                <input type="text" name="student_name" id="student_name" value="{{old('student_name')}}" class="form-control"><br>
+                @error('student_name')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <label>Course</label><br>
+                <input type="text" name="course" id="course" value="{{old('course')}}" class="form-control"><br>
+                @error('course')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <label>Fee</label><br>
+                <input type="text" name="fee" id="fee" value="{{old('fee')}}" class="form-control"><br>
+                @error('fee')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <input type="submit" value="Save" class="btn btn-success"><br>
             </form>
 
