@@ -17,3 +17,4 @@ Route::get('/', function (){return view('landing');});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 Route::get('redirect/{service}','socialController@redirect');
 Route::get('callback/{service}','socialController@callback');
+Route::resource('/students', StudentController::class);
