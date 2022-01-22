@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +41,12 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = $request->validate([
+            'student_name' => 'required',
+            'course' => 'required',
+            'fee' => 'required',
+        ]);
+        //$input = $request->all();
         Student::create($input);
         return redirect('students')->with('flash_message', 'Student Addedd!');
     }
@@ -75,7 +85,12 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $student = Student::find($id);
-        $input = $request->all();
+        $input = $request->validate([
+            'student_name' => 'required',
+            'course' => 'required',
+            'fee' => 'required',
+        ]);
+        //$input = $request->all();
         $student->update($input);
         return redirect('students')->with('flash_message','Student updated');
     }
